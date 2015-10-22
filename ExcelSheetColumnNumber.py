@@ -10,11 +10,12 @@ class Solution(object):
         # 	n = n + (ord(letter)-64)*26**(l-1)
         # 	l=l-1
         # return n
-        l = len(s)
-        n = 0
-        for letter in s:
-        	n += ord(letter)-ord('A')+1)*26**(l-1)
-        	l -= 1
-        return n
 
-aaa = map(lambda x: x ** 2, range(10))
+        # version 1
+        res = 0
+        for i in s:
+            res = res*26 + ord(i)-ord("A") + 1
+        return res
+
+        # version 2
+        return reduce(lambda x,y:x*26+y,map(lambda x:ord(x)-ord('A')+1,s))
