@@ -6,44 +6,25 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
+
         candidates.sort()
-        n = len(candidates)
+        res = []
+        fres = []
+
+        bt(candidates,target,0,res,fres)
+        return fres
+
+def bt(candidates,target,index,res,fres):
+    if target < 0:
+        return 
+    if target == 0:
+        fres.append(res)
+        return
+    # ??? How to  stop running for loop when target <0
+    for i in xrange(index, len(candidates)):
+        bt(candidates,target - candidates[i], i,res+[candidates[i]],fres)
         
-        result = []
-
-        back(candidates,target)
 
 
-class Solution(object):
-    def combinationSum(self, candidates, target):
-        """
-        :type candidates: List[int]
-        :type target: int
-        :rtype: List[List[int]]
-        """
-        candidates.sort()
-        result = []
-        n = len(candidates)
-
-        back(candidates,target,result,n)
-
-
-def back(candidates, target,result,n):
-    for i in xrange(n):
-        
-        print target, result, candidates[i]
-        if candidates[i] <= target:
-            target = target - candidates[i]
-            print target
-            if target == 0:
-                result.append(candidates[i])
-                print result
-                
-            elif target < candidates[i]: 
-                return
-            else:
-                result.append(candidates[i])
-                back(candidates, target, result,n)
-    
-        
-            
+a = Solution()
+print a.combinationSum([2,3,4,5],7)

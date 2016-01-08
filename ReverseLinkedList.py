@@ -10,6 +10,20 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        if not head:
+            return head
+        last = None
+        while head.next:
+            
+            later = head.next
+            head.next = last
+            last = head
+            head = later
+        head.next = last
+        return head 
+        
+
+
         # Iteration
         prev = None
         while head:
@@ -30,7 +44,3 @@ class Solution(object):
         next = head.next
         head.next = last
         return self.reverseList(next, head)
-
-        
-        
-    
