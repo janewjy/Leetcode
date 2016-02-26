@@ -17,21 +17,25 @@ def gencode(code,n,curr,size):
         mask = 1 << i
         el = curr^mask
         if el not in code:
-
             code.append(el)
+            # print code
             gencode(code, n ,el,size)
+            # print code
             if len(code) == size:
                 return
             code.remove(el)
+            # print code
 
 
 # iteration solution???
-def grayCode(self, n):
-    ans = [0]
-    for i in xrange(n):
-        for j in xrange(len(ans) - 1, -1, -1):
-            ans.append(1 << i | ans[j])
-    return ans
+    def grayCode(self, n):
+        ans = [0]
+        for i in xrange(n):
+            for j in xrange(len(ans) - 1, -1, -1):
+                print 1 << i,ans[j]
+                ans.append(1 << i | ans[j])
+                print ans
+        return ans
 
 a = Solution()
 print a.grayCode(4)

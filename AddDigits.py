@@ -1,19 +1,3 @@
-# class Solution(object):
-#     def addDigits(self, num):
-#         """
-#         :type num: int
-#         :rtype: int
-#         """
-
-#         n = 0
-#         while num >= 1:
-#         	n += num % 10
-#         	num //= 10
-        
-#         	if num == 0 and n > 9:
-#         		num = n
-#         		n = 0
-#         return n
 
 
 def addDigits(num):
@@ -28,3 +12,21 @@ def addDigits(num):
 
 print addDigits(126)
 
+# 1-29
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        n = 0
+        while num > 0:            
+            n += num%10
+            num /= 10
+            if num == 0:
+                if n < 10:
+                    return n
+                else:
+                    num = n
+                    n = 0
+print Solution().addDigits(38)

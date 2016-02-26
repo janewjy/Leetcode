@@ -10,3 +10,11 @@ class Solution(object):
             res = max(res,big)
         return res
 # ??? go over again
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        

@@ -64,29 +64,22 @@ class Solution(object):
         :rtype: bool
         """
         n = len(nums)
-        if n == 1:
-            return nums[0] == target
-
         i, j = 0, n-1
 
-        while i<j:
+        while i <= j:
 
             mid = (i+j)//2
             if target == nums[mid]:
                 return mid
-            if target == nums[i]:
-                return i
-            if target == nums[j]: 
-                return j
-            if nums[i] < nums[mid]:
-                if nums[i] < target < nums[mid]:
+            if nums[i] <= nums[mid]:
+                if nums[i] <= target < nums[mid]:
                     j = mid-1
-                if target > nums[mid] or target < nums[i]:
+                else:
                     i = mid+1
             else:
-                if nums[mid] < target < nums[j]:
+                if nums[mid] < target <= nums[j]:
                     i = mid+1
-                if target < nums[mid] or target > nums[j]:
+                else:
                     j = mid-1
         return -1
 

@@ -26,3 +26,6 @@ class Solution(object):
         return node.val + max(l, r)
         
         
+[1,null,2,null,3,null,4,null,5]
+[1,-2,3]
+[-3]

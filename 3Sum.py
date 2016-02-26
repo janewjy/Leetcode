@@ -71,6 +71,38 @@ class Solution(object):
         
         
         
-        
+#1-19 eliminate the duplicat nums make code much faster
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        n = len(nums)
+        if n < 3 or nums[0] > 0 or nums[-1] < 0:
+            return []
+        res = []
+        for i in xrange(n-2):
+            if nums[i] > 0:
+                break
+            if i > 0 and nums[i] == nums[i-1]:
+                    continue
+            for j in xrange(i+1,n-1):
+                target = 0 - nums[i] - nums[j]
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
+                if target < nums[j]:
+                    break
+                
+                if target in nums[j+1:]:
+                    res.append([nums[i],nums[j],target])
+        return res
+                    
+                    
+                
+                
+            
+
         
         

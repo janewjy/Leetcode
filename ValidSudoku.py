@@ -32,3 +32,40 @@ def findDuplicants(s):
         dic[i] = 1
     
     return False
+
+# 1-25
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        m = len(board)
+        for i in board:
+            save = []
+            for j in i:
+                if board[i][j]!='.':
+                    if board[i][j] not in save:
+                        save.append(board[i][j])
+                    else:
+                        return False
+        for j in xrange(m):
+            save = []
+            for i in xrange(m):
+                if board[i][j]!='.':
+                    if board[i][j] not in save:
+                        save.append(board[i][j])
+                    else:
+                        return False
+        for i in [0,3,6]:
+            for j in [0,3,6]:
+                save = []
+                unit = [s[i:i+3] for s in board[j:j+3]]
+                for k in unit:
+                    if k!='.':
+                        if board[i][j] not in save:
+                            save.append(board[i][j])
+                        else:
+                            return False
+        return True
+

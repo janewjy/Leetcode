@@ -57,3 +57,40 @@ def dfs(root,val,res):
             return res + val
             
     return res
+
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def sumNumbers(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        front = [root]
+        total = 0
+        while front:
+            level = []
+            for node in front:
+                if node.left:
+                    node.left.val = node.val*10 + node.left.val
+                    level.append(node.left)
+                if node.right:
+                    node.right.val = node.val*10+ node.right.val
+                    level.append(node.right)
+
+                if not node.left and not node.right:
+                    total += node.val
+            front = level
+        return total
+
+
+
+        

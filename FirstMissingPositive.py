@@ -4,9 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        for index,n in enumerate(nums):
-            while n != index and n>=0:
-                nums[n],nums[index] = nums[index], nums[n]
+        n = len(nums)
+        
+        for i in xrange(n):
+            while nums[i]>0 and nums[i] <= n and nums[nums[i] -1 ]!=nums[i]:
+                temp = nums[nums[i]-1]
+                nums[nums[i]-1] = nums[i]
+                nums[i] = temp
+        for i in xrange(n):
+            if nums[i] != i +1:
+                return i+1
+        return n+1
 
-
-Solution().firstMissingPositive([1,2,3])
+print Solution().firstMissingPositive([-1,1,2,3])

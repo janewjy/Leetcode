@@ -20,4 +20,21 @@ class Solution(object):
                 return 0-rev
             return rev
         return 0
+# 1-24
+import sys
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 0:
+            sign = -1
+        else:
+            sign = 1
+        
+        x = abs(x)
+        if int(str(x)[::-1]) > sys.maxint:
+            return 0
+        return int(str(x)[::-1])*sign
             

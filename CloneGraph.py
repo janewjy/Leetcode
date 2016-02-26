@@ -62,3 +62,34 @@ class Solution(object):
             frontier = nextlnode
         return start
                    
+
+# Definition for a undirected graph node
+# class UndirectedGraphNode(object):
+#     def __init__(self, x):
+#         self.label = x
+#         self.neighbors = []
+
+class Solution(object):
+    def cloneGraph(self, node):
+        """
+        :type node: UndirectedGraphNode
+        :rtype: UndirectedGraphNode
+        """
+        if not node:
+            return
+        front = [node]
+        root = UndirectedGraphNode(node.label)
+        dic = {node:root}
+        while front:
+            level = []
+            for n in front:
+                for nh in n.neighbors:
+                    if nh not in dic:
+                        node = UndirectedGraphNode(nh.label)
+                        dic[nh] = node
+                        dic[n].neighbors.append(node)
+                        level.append(nh)
+                    else:
+                        dic[n].neighbors.append(dic[nh])
+            front = level
+        return  root

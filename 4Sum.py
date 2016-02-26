@@ -93,3 +93,43 @@ class Solution:
                     else:
                         l -= 1
         return result
+# 1-20
+class Solution(object):
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        
+        res = []
+        n = len(nums)
+        nums.sort()
+
+        for i in xrange(n-3):
+            if nums[i] > target/4.0:
+                break
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            target2 = target - nums[i]
+            for j in xrange(i+1,n-2):
+                if nums[j] > target2/3.0:
+                    break
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
+                target3 = target2-nums[j]
+                k,l = j+1,n-1
+                while k < l:
+                    if nums[k] > target3/2.0:
+                        break
+                    if nums[l] < target3/2.0:
+                        break
+                    
+                    sumation = nums[i]+nums[j]+nums[k]+nums[l]
+                    if sumation == target and [nums[i],nums[j],nums[k], nums[l]] not in res :
+                        res.append([nums[i],nums[j],nums[k], nums[l]])
+                    if sumation > target:
+                        l -= 1
+                    else:
+                        k += 1
+        return res

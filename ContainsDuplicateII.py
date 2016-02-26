@@ -41,8 +41,22 @@ def containsNearbyDuplicate(self, nums, k):
         dic[v] = i
     return False
 
-[1,0,1,1]
-1
-
-[1,2,3,1,1,2,3]
-0
+# 2-4
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        dic = {}
+        for i in xrange(len(nums)):
+            if nums[i] not in dic:
+                dic[nums[i]] = i
+            else:
+                if i-dic[nums[i]] <= k:
+                    return True
+                else:
+                    dic[nums[i]] = i
+        return False
+                

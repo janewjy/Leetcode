@@ -21,13 +21,6 @@ def helper(n):
 
 
 
-
-
-
-
-
 a = Solution()
 print a.countAndSay(5)
 
-
-                

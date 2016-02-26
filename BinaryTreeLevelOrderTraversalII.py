@@ -33,3 +33,29 @@ class Solution(object):
                 level.insert(0, nextlval)
                 
         return level
+
+# 2-4
+class Solution(object):
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+            
+        front = [root]
+        res = []
+        while front:
+            level = []
+            subres = []
+            for node in front:
+                subres.append(node.val)
+                if node.left:
+                    level.append(node.left)
+                if node.right:
+                    level.append(node.right)
+            res.insert(0,subres)
+            front = level
+        return res
+        

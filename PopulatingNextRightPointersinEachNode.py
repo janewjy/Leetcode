@@ -14,15 +14,14 @@ class Solution(object):
         """
         if not root:
             return
-        queue = []
-        front = [root]
-        while front:
-            for i in xrange(len(front)):
-                if front[i].left != None:             
-                    queue.append(front[i].left)
-                    queue.append(front[i].right)
-                if i < len(front) - 1:
-                    front[i].next = front[i+1]
-            front = queue
-            queue = []
+
+        while root.left:
+            p = root
+            while p:
+                p.left.next = p.right
+                if p.next:
+                    p.right.next = p.next.left
+                p = p.next
+            root = root.left
+        
         

@@ -34,3 +34,27 @@ class Solution:
             else:
                 return False
         return stack == []
+# 1/11/2016
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        for c in s:
+            if c in ['(','[','{']:
+                stack.append(c)
+            if c in [')',']','}']:
+                if not stack:
+                    return False
+                else:
+                    l = stack.pop()
+                    if l+c not in  ['()','[]','{}']:
+                        return False
+        # return stack == []
+        if not stack:
+            return True
+        else:
+            return False
+

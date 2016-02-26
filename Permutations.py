@@ -61,4 +61,40 @@ class Solution(object):
             self.wawa(nums[:i]+nums[i+1:], cur+[nums[i]], res)
     
 
+# 1-25
+class Solution(object):
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = []
+        bk(nums,[],res)
+        return res
 
+def bk(nums,subres,res):
+    if len(nums) == 0:
+        res.append(subres)
+        return
+    for i in xrange(0,len(nums)):
+        if i==0 or nums[0] != nums[i]:
+            nums[0],nums[i] = nums[i],nums[0]
+            bk(nums[1:],subres+[nums[0]],res)
+            nums[0],nums[i] = nums[i],nums[0]
+
+class Solution(object):
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = []
+        bk(nums,[],res)
+        print res
+
+def bk(nums,subres,res):
+    if not nums:
+        res.append(subres)
+
+    for i in xrange(len(nums)):
+        bk(nums[:i]+nums[i+1:],subres+[nums[i]],res)

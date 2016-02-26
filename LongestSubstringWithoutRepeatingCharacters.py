@@ -44,3 +44,23 @@ class Solution(object):
                 
             usedChar[s[i]] = i
         return result
+
+# 1-19 ??? use dictionary to solve it again
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        i, j = 0, 0
+        stack = []
+        res = 0
+        for i in xrange(len(s)):
+            while j<i and s[i] in stack :
+                stack.remove(s[j])
+                j += 1
+            stack.append(s[i])
+            res = max(res, len(stack))
+            
+                        
+        return res

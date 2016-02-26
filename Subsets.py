@@ -7,7 +7,7 @@ class Solution(object):
             for j in xrange(len(nums)):
                 if i & 1 << j:  # if i >> j & 1:
                     tmp.append(nums[j])
-                    print tmp, res
+            print tmp, res
             res.append(tmp)
         return res
 

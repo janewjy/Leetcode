@@ -1,33 +1,20 @@
-def plusOne(digits):
-    """
-    :type digits: List[int]
-    :rtype: List[int]
-    """
-    num = 0
-    l = len(digits)
-    for digit in digits:
-        l -= 1
-        num += digit * (10 ** (l))        
-  
-    num += 1
-    
-    list_ = []
-    while num > 0:
-        list_ = [num % 10] + list_
-        num //= 10
-    
-    return list_
 
-print plusOne([1,0])
-
-
-    for ind, val in enumerate(alist):
-        num *= ind * val
-
-    for key, val in adict.iteritems():
-
-    for key in sorted(adict.keys()):
-
-  
-
-        
+# 1-29
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        carry = 1
+        for i in range(len(digits)-1,-1,-1):
+            n = digits[i] + carry
+            digits[i] = n%10
+            carry = n//10
+        if carry != 0:
+            return [carry]+digits
+        else:
+            return digits
+            
+            
+             

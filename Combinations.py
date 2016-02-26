@@ -22,3 +22,23 @@ class Solution(object):
 
 a = Solution()
 print a.combine(4,2)
+
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        bk(res,[],1,k,n+1)
+        return res
+        
+def bk(res,path,index,k,n):
+    if k == 0:
+        res.append(path)
+    for i in xrange(index,n):
+        bk(res,path+[i],i+1,k-1,n)
+        
+
+

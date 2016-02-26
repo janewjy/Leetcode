@@ -56,3 +56,34 @@ public ListNode partition(ListNode head, int x) {
     }
     return dummy.next;
 }
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+2-17
+class Solution(object):
+    def partition(self, head, x):
+        """
+        :type head: ListNode
+        :type x: int
+        :rtype: ListNode
+        """
+        head1 = dmy1 = ListNode(0)
+        head2 = dmy2 = ListNode(0)
+        cur = head
+        
+        while cur:
+            if cur.val < x:
+                head1.next = cur
+                head1 = head1.next
+            else:
+                head2.next = cur
+                head2 = head2.next
+            
+            cur = cur.next
+        head2.next = None
+        head1.next = dmy2.next
+        return dmy1.next
+        

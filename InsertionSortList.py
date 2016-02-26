@@ -20,7 +20,6 @@ class Solution(object):
         return head
 
 
-
 # why is is faster???
 class Solution1(object):
     def insertionSortList(self, head):
@@ -46,6 +45,9 @@ class Solution1(object):
                 cur = cur.next
         return fh.next
 
+[2,1]
+[1,1]
+
 
 if __name__ == '__main__':
 
@@ -57,3 +59,4 @@ if __name__ == '__main__':
 
 
     print time.time() - bgn_time
+

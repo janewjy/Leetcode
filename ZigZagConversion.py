@@ -36,5 +36,26 @@ class Solution(object):
                 
         return ''.join(output)
             
-            
-        
+
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+               
+        if numRows == 1 or len(s) <= numRows:
+            return s
+        period = 2*(numRows-1)
+        output = []
+        for i in xrange(numRows):
+            j = i
+            while j<len(s):
+                output.append(s[j])
+                step2 = (j-i)+period-i
+                if i!=0 and i!=numRows-1 and step2 < len(s):
+                    output.append(s[step2])
+                j+= period
+        return ''.join(output)
+               

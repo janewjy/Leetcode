@@ -23,3 +23,24 @@ class Solution(object):
 
 a = Solution()
 print a.uniquePaths(4,4)
+
+# 2-8
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        self.res = 0
+        self.m = m
+        self.n = n
+        self.res = self.path(1,1)
+        return self.res       
+        
+    def path(self,i,j):
+        if i >self.m or j> self.n:
+            return 0
+        if i == self.m and j == self.n:
+            return self.res + 1
+        return self.path(i+1,j) + self.path(i,j+1)

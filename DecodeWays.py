@@ -22,3 +22,25 @@ class Solution(object):
 
 a = Solution()
 print a.numDecodings("01")        
+
+
+class Solution(object):
+    def numDecodings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if not s or s[0] == '0':
+            return 0
+        dp = {-1:1,0:1}
+        for i in xrange(1,len(s)):
+            if s[i] != '0':
+                dp[i] = dp[i-1]
+            else:
+                dp[i] = 0
+            if 9<int(s[i-1:i+1]) < 27:
+                dp[i] += dp[i-2]
+        return dp[len(s)-1]
+            
+                
+            

@@ -37,3 +37,18 @@ while num:
 print ans
 
 
+
+class Solution(object):
+    def convertToTitle(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        res = ''
+        while n > 0:
+            
+            l = (n-1)%26
+            
+            res = chr(l+ord('A')) + res
+            n = (n-l)/26
+        return res

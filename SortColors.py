@@ -47,3 +47,21 @@ class Solution(object):
                 r -= 1
             else:
                 l += 1
+
+
+class Solution(object):
+    def sortColors(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        count1 = count0= 0
+        for i in nums:
+            if i == 1:
+                count1 += 1
+            elif i == 0:
+                count0 += 1
+        nums[:count0] = [0]*count0
+        nums[count0:count0+count1] = [1]*count1
+        nums[count0+count1:] = [2]*(len(nums)-count1-count0)
+        

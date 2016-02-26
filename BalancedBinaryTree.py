@@ -23,3 +23,6 @@ class Solution(object):
         return 1+max(self.height(root.left), self.height(root.right))
     
     # can you use classified discussion do it as well???s
+
+# [1,2,2,3,3,3,3,4,4,4,4,4,4,null,null,5,5] is a Balanced tree
+# 

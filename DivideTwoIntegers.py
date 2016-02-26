@@ -38,20 +38,20 @@ class Solution(object):
 
 class Solution:
 # @return an integer
-def divide(self, dividend, divisor):
-    positive = (dividend < 0) is (divisor < 0)
-    dividend, divisor = abs(dividend), abs(divisor)
-    res = 0
-    while dividend >= divisor:
-        temp, i = divisor, 1
-        while dividend >= temp:
-            dividend -= temp
-            res += i
-            i <<= 1
-            temp <<= 1
-    if not positive:
-        res = -res
-    return min(max(-2147483648, res), 2147483647)
+    def divide(self, dividend, divisor):
+        positive = (dividend < 0) is (divisor < 0)
+        dividend, divisor = abs(dividend), abs(divisor)
+        res = 0
+        while dividend >= divisor:
+            temp, i = divisor, 1
+            while dividend >= temp:
+                dividend -= temp
+                res += i
+                i <<= 1
+                temp <<= 1
+        if not positive:
+            res = -res
+        return min(max(-2147483648, res), 2147483647)
 
 # faster solution
 class Solution:
@@ -78,3 +78,36 @@ class Solution:
             dvs=dvs>>1
         res=res if sign else -res
         return min(res,MAX_INT)
+# 1-27
+class Solution(object):
+    def divide(self, dividend, divisor):
+        """
+        :type dividend: int
+        :type divisor: int
+        :rtype: int
+        """
+        if dividend >= 0 and divisor > 0 or (dividend <= 0 and divisor<0):
+            sign = 1
+        else:
+            sign = -1
+            
+        dividend =abs(dividend)
+        divisor = abs(divisor)
+        
+        res = 0
+        while dividend >= divisor:
+            time = divisor
+            n = 1
+            while dividend >= time:
+                dividend -= time
+                res += n
+                n += n
+                time += time
+                
+        if sign < 0:
+            res = -res
+        return min(max(-2147483648,res),2147483647)
+
+import sys
+print sys.maxint
+print sys.maxint**10000

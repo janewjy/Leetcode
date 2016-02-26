@@ -35,3 +35,56 @@ class Solution(object):
         
         
         
+class Solution(object):
+    def fractionToDecimal(self, numerator, denominator):
+        """
+        :type numerator: int
+        :type denominator: int
+        :rtype: str
+        """
+
+        if numerator == 0:
+            return '0'
+        if numerator*denominator > 0:
+            sign = ''
+        else:
+            sign = '-'
+
+        numerator, denominator = abs(numerator),abs(denominator)
+        inter = int(numerator4/denominator)
+        numerator = numerator3%denominator
+        mapping = {numerator:0}
+        decimal = []
+        pos = 1
+        while numerator!=0:
+            digit = numerator/denominator
+            decimal.append(str(digit))
+            numerator%=denominator
+            mapping(numerator:pos)
+
+
+
+
+
+
+
+
+
+
+
+
+        integer = numerator/denominator
+        numerator %= denominator
+        mapping = {}
+        pos = 0
+        res = []
+        while numerator*10%denominator not in mapping:
+            digit = numerator*10/denominator
+            mapping[digit] = pos
+            res.append(str(digit))
+            numerator = numerator*10%denominator
+        res.insert(mapping[numerator*10%denominator],'(')
+        
+        return str(integer)+'.'+''.join(res)+')'
+
+print Solution().fractionToDecimal(1,5)

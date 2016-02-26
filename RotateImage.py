@@ -75,5 +75,19 @@ if __name__ == '__main__':
     print matrix2
 
 
-
+class Solution(object):
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        for i in xrange(n/2):
+            matrix[i],matrix[n-1-i] = matrix[n-1-i],matrix[i]
+        for i in xrange(n):
+            for j in xrange(i):
+                matrix[i][j],matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+                
+            
 
